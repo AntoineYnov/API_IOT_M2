@@ -19,16 +19,15 @@ class Service {
     }
 
     getAll() {
-        let values;
-        this.db.all("select * from luminosites", [], (err, rows) => {
-            if(err) {
-                console.error(err.message)
-                return
-            }
-            values = rows
+        return new Promise((resolve, reject) => {
+            this.db.all("select * from luminosites", [], async (err, rows) => {
+                if(err) {
+                    console.error(err.message)
+                    reject(err.message)
+                }
+                resolve(rows)
+          });
         });
-        console.log(values)
-        return values
     }
     create(value) {
         this.db.run("Insert into luminosites(value) values(?)",value,  function(err) {
@@ -38,7 +37,7 @@ class Service {
         })
     }
     delete() {
-        this.db.delete("delete from luminosites", function(err) {
+        this.db.run("delete from luminosites", function(err) {
             if (err) {
               return console.log(err.message);
             }

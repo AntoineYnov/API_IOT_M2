@@ -7,17 +7,12 @@ const Service = require('../services/service');
 let service = new Service();
 
 // eslint-disable-next-line no-unused-vars
-router.get('/', (req, res, next) => {
-  res.json(service.getAll())
+router.get('/', async (req, res, next) => {
+  await service.getAll().then(data => res.json(data))
 });
 
 router.post('/', (req, res, next) => {
-  console.log(req.body)
-  console.log("CONSOLE LOOOOOOG")
-  console.log(req.params)
-  console.log("CONSOLE LOOOOOOG 2")
-  console.log(req.query)
-  res.json(service.create(req.body))
+  res.json(service.create(req.body.value))
 });
 
 router.delete('/', (req, res, next) => {
