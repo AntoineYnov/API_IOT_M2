@@ -15,6 +15,10 @@ router.post('/', (req, res, next) => {
   res.json(service.create(req.body.value))
 });
 
+router.post('/led', (req, res, next) => {
+  res.json(service.power(req.body.value))
+});
+
 router.delete('/', (req, res, next) => {
   res.json(service.delete())
 });
