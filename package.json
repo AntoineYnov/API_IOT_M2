@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "NODE_ENV=production node ./src/bin/www",
-    "dev": "NODE_ENV=development nodemon ./src/bin/www",
+    "start": "node ./src/bin/www",
+    "dev": "nodemon ./src/bin/www",
     "test": "jest",
     "test:watch": "jest --watchAll",
     "lint": "eslint .",
@@ -15,7 +15,9 @@
     "express": "~4.16.0",
     "helmet": "^3.21.1",
     "http-errors": "~1.6.2",
-    "morgan": "~1.9.0"
+    "morgan": "~1.9.0",
+    "sequelize": "^6.6.2",
+    "sqlite3": "^5.0.2"
   },
   "devDependencies": {
     "eslint": "^5.12.0",
